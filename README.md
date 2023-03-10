@@ -26,7 +26,7 @@ For the __Windows__ version see https://github.com/MLeidel/BCBW
 
 ------
 ## Installing descq
-download and install the .deb file.
+See the [readme.txt](readme.txt) file.
 
 ---
 
@@ -45,7 +45,7 @@ caption status (_winmet.txt_.)
 ![caption](images/Deskq_cap.png) 
 ![desktop](images/deskq_on_my_desktop.png) 
 
-> *above descq was positioned along side an xfce panel.* 
+> ***above descq was positioned along side an xfce panel.*** 
 
 ## descq commands:
 
