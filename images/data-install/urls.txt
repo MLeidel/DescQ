@@ -1,2 +1,0 @@
-https://rust-by-example-ext.com/
-https://doc.rust-lang.org/stable/rust-by-example/

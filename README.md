@@ -275,5 +275,13 @@ to find out how it works.
 
 ![DescQ & Pop-OS](images/Pop-OS_and_DescQ.png)
 
+## LMDE
+
+![DescQ & Pop-OS](images/screen_LMDE_crop.png)
+
+## MX
+
+![DescQ & Pop-OS](images/screen_MX_crop.png)
+
 #### end
 
