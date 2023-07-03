@@ -687,6 +687,32 @@ const char * get_bc_result(const char * expr) {
     return chomp(path);
 }
 
+const char * get_date_result(const char * expr) {
+    FILE *fp;
+    static char path[1024] = {'\0'};
+    char dtxpr[1024] = {'\0'};
+
+    // format the pipe to date
+    strcpy(dtxpr, "date -d \"");
+    strcat(dtxpr, expr);
+    strcat(dtxpr, "\" +%Y-%m-%d");
+
+    /* Open the command for reading. */
+    fp = popen(dtxpr, "r");
+    if (fp == NULL) {
+        printf("Failed to run command\n" );
+        return "fail";
+    }
+    /* Read the output a line at a time (output it.) */
+    while (fgets(path, sizeof(path), fp) != NULL) {
+        // printf("%s", path);
+    }
+
+    /* close */
+    pclose(fp);
+    return chomp(path);
+}
+
 
 void process_entry(char *out_str) {
     FILE *fh;
@@ -802,6 +828,12 @@ void process_entry(char *out_str) {
         strcpy(action, out_str+1);
         const char * res = get_bc_result(action);
         gtk_entry_set_text(GTK_ENTRY(g_entry), res);
+
+    } else if (out_str[0] == '%') {  // evaluate this date addition expression
+        strcpy(action, out_str+1);
+        const char * res = get_date_result(action);
+        gtk_entry_set_text(GTK_ENTRY(g_entry), res);
+        strcpy(res, "error"); // incase date command fails this will be in res
 
     } else {  // continue on to check for other possible commands
         commands(out_str);  // these actions are shared by the command line process

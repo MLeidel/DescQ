@@ -71,6 +71,7 @@ _Enter_, _Tab_, or click the _action-button_ &#9744;.
 |**top**|toggles the window level to Top or Bottom|
 |**help**|view this help|
 |**=**|Calculator eg. =2^2|
+|**%**|date Math eg. %+100 days|
 |**up/dn arrow** key|recall last 10 entries|
 |**Esc** key|clear entry field|
 
@@ -93,7 +94,7 @@ by prefixing it with one of these characters:
 "$" or "@" or ">"
 
 For example: **>gimp**
-or **>gedit**
+or **$gedit**
 
 ---
 
@@ -105,6 +106,19 @@ _=24.5^3 / 2.2_
 
 > This feature requires that "bc" the Linux "Basic Calculator" 
 be installed on your system.
+
+---
+
+Calculate future or past dates using a leading "%"
+followed by an offset expresion (see bash 'date' command.)
+
+examples: 
+>
+`%+5 days`  
+`%-4 weeks`  
+`%2021-04-01 + 100 days`  
+
+The response will always be in the `%Y-%m-%d` format.
 
 ---
 
