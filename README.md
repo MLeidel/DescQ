@@ -120,6 +120,8 @@ examples:
 
 The response will always be in the `%Y-%m-%d` format.
 
+AVAILABLE ONLY FOR LINUX SYSTEMS
+
 ---
 
 ### Save and recall URLs and text clippings.
