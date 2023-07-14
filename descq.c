@@ -688,6 +688,8 @@ const char * get_bc_result(const char * expr) {
 }
 
 const char * get_date_result(const char * expr) {
+    /* example: expr = "% 1 year + 1 month + 2 days"
+    */
     FILE *fp;
     static char path[1024] = {'\0'};
     char dtxpr[1024] = {'\0'};

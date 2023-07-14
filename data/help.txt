@@ -48,6 +48,11 @@ where $ can be $, @, or > e.g. $https://example.com
 Evaluate math expressions using a leading "="...
 =3^5 / 2.5
 
+Evaluate date calculation using a leading "%"...
+% +1 year + 2 months + 2 days
+% +200 days
+% 2021-04-01 + 100 days
+
 Create aliases for favorite commands in serv.txt file:
 
 	news,	https://microsoftnews.msn.com &
