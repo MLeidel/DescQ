@@ -47,7 +47,17 @@ caption status (_winmet.txt_.)
 
 > ***above descq was positioned along side an xfce panel.***
 
-## descq commands:
+## Search Requests and Command Requests
+
+Type a web search into the entry box and hit Enter.
+
+Multiple searches or commands are made by delimiting
+each with "|"
+
+>For example, perform three searches with one command:
+**dogs|cats|tadpoles**
+
+---
 
 Activate the request you've typed by hitting
 _Enter_, _Tab_, or click the _action-button_ &#9744;.
@@ -71,34 +81,28 @@ _Enter_, _Tab_, or click the _action-button_ &#9744;.
 |**top**|toggles the window level to Top or Bottom|
 |**help**|view this help|
 |**=**|Calculator eg. =2^2|
+|**>**|execute a system process eg. >gedit|
 |**%**|date Math eg. %+100 days|
+|**@**|widget pixel positioning eg. @top:-12|
 |**up/dn arrow** key|recall last 10 entries|
 |**Esc** key|clear entry field|
 
 ---
 
-## Search Requests and Command Requests
-
-Type a web search into the entry box and hit Enter.
-
-Multiple searches or commands are made by delimiting
-each with "|"
-
->For example, perform three searches with one command:
-**dogs|cats|tadpoles**
-
----
-
 Directly execute an app installed on your system
 by prefixing it with one of these characters:
-"$" or "@" or ">"
+__"$"__ or __">"__
 
 For example: **>gimp**
 or **$gedit**
 
+If a URL follows the ">" then it will open
+it up in the browser. Without the ">" the
+URL is saved.
+
 ---
 
-Evaluate math expressions using a leading "="
+Evaluate math expressions using a leading __"="__
 followed by the expression.
 
 example:
@@ -109,7 +113,7 @@ be installed on your system.
 
 ---
 
-Calculate future or past dates using a leading "%"
+Calculate future or past dates using a leading __"%"__
 followed by an offset expresion (see bash 'date' command.)
 
 examples: 
@@ -123,6 +127,26 @@ The response will always be in the `%Y-%m-%d` format.
 AVAILABLE ONLY FOR LINUX SYSTEMS
 
 ---
+
+Window/widget fine postioning can be tweaked while
+the window _is in un-decorated mode_ by using
+the __"@"__ command like so:
+>
+`@top:+20`  
+`@top:-20`  
+`@left:+17`  
+`@width:+210`  
+`@height:-3`  
+
+These pixel values are added or subtracted
+from the current position values!  
+
+When position is correct then use the "winset"
+command to save the window position.
+
+For broader positioning use the "cap" command
+to toggle into "decorated" mode, and then drag
+the window around like any other window.
 
 ### Save and recall URLs and text clippings.
 
