@@ -210,12 +210,6 @@ GtkClipboard *g_clipboard;
 GtkWidget *g_wnd;
 
 // Global variables
-int  w_top = 0;
-int  w_left = 0;
-int  w_width = 0;
-int  w_height = 0;
-int  w_decor = 0;
-
 char g_editor[128] = {0};  // user's editor executable name
 char g_sea_engine[128] = {0};  // user's search engine string
 int cmdline = 0;  // 1 is command line, 0 is GUI
@@ -408,23 +402,6 @@ void change_query_engine() {
     fclose(fh);
 }
 
-void get_window_metrics() {
-    FILE *fh;
-    char line[TWOKB];
-    fh = open_for_read("data/winmet.txt");
-    fgets(line, 64, fh);
-    fclose(fh);
-    chomp(line);  // remove new line character
-    list vals = list_def(5, 16);
-    list_split(vals, line, ",");
-    w_left      = atoi(vals.item[0]);
-    w_top       = atoi(vals.item[1]);
-    w_width     = atoi(vals.item[2]);
-    w_height    = atoi(vals.item[3]);
-    w_decor     = atoi(vals.item[4]);
-    list_del(vals);
-}
-
 /*
  ___  ___       ___       __   __   __
 |   \/   |     /   \     |  | |  \ |  |
@@ -440,6 +417,11 @@ int main(int argc, char *argv[])
     GtkBuilder      *builder;
     GtkWidget       *window;
     FILE            *fh;
+    int             w_top;
+    int             w_left;
+    int             w_width;
+    int             w_height;
+    int             w_decor;
     int             count = 0;
     char            line[TWOKB];
 
@@ -490,8 +472,18 @@ int main(int argc, char *argv[])
     g_object_unref(builder);
 
     // load the window metrics
-    get_window_metrics();
-        // metrics ok at this point
+    fh = open_for_read("data/winmet.txt");
+    fgets(line, 64, fh);
+    fclose(fh);
+    chomp(line);  // remove new line character
+    list vals = list_def(5, 16);
+    list_split(vals, line, ",");
+    w_left      = atoi(vals.item[0]);
+    w_top       = atoi(vals.item[1]);
+    w_width     = atoi(vals.item[2]);
+    w_height    = atoi(vals.item[3]);
+    w_decor     = atoi(vals.item[4]);
+    list_del(vals);
 
     gtk_widget_show(window);
     gtk_window_move(GTK_WINDOW(g_wnd), w_left, w_top);  // set metrics ...
@@ -728,7 +720,11 @@ void process_entry(char *out_str) {
     FILE *fh;
     char action[TWOKB] = {0};
     char line[TWOKB] = {0};
-    int value = 0;
+    //gchar out_str[TWOKB] = {0};
+    int w_top;
+    int w_left;
+    int w_width;
+    int w_height;
 
     // store for entry history
     if(!equals(out_str, "x")) {
@@ -841,44 +837,6 @@ void process_entry(char *out_str) {
         gtk_entry_set_text(GTK_ENTRY(g_entry), res);
         strcpy(res, "error"); // incase date command fails this will be in res
 
-    } else if (out_str[0] == '@') {  // positioning commands
-        strcpy(action, out_str+1);  // action examples: left:+50 | top:-22 | width:-3
-        if (gtk_window_get_decorated(GTK_WINDOW(g_wnd))) {
-            return;  // only works when undecorated (no title bar)
-        }
-        /*
-            parse action into line and value
-            eg.
-            line = left
-            value = -12
-        */
-        list pos = list_def(2, 32);
-        int n = list_split(pos, action, ":");
-        strcpy(line, pos.item[0]);
-        value = atoi(pos.item[1]);
-        list_del(pos);
-
-        // next: modify the correct value
-
-        if (equalsignore(line, "left")) {
-            w_left = w_left + value;
-        } else
-        if (equalsignore(line, "top")) {
-            w_top = w_top + value;
-        } else
-        if (equalsignore(line, "width")) {
-            w_width = w_width + value;
-        } else
-        if (equalsignore(line, "height")) {
-            w_height = w_height + value;
-        } else
-            return;
-
-        // next: adjust the window position
-        // user must use 'winset' command to save position
-        gtk_window_move(GTK_WINDOW(g_wnd), w_left, w_top);  // set metrics ...
-        gtk_window_resize(GTK_WINDOW(g_wnd), w_width, w_height);
-
     } else {  // continue on to check for other possible commands
         commands(out_str);  // these actions are shared by the command line process
     }
@@ -890,7 +848,7 @@ void on_entry_activate(GtkEntry *entry) {
     The user has typed something into the entry field and hit Enter.
     (or might have clicked the button instead of hitting Enter)
     Determine if it is a:
-    1. command (e.g. list ...)
+    1. bcb command (e.g. list ...)
     2. alias from the serv.txt file
     3. Internet search text
     */
