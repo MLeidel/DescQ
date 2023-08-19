@@ -46,12 +46,18 @@ where $ can be $, @, or > e.g. $https://example.com
 	>gedit
 
 Evaluate math expressions using a leading "="...
-=3^5 / 2.5
+    =3^5 / 2.5
 
 Evaluate date calculation using a leading "%"...
-% +1 year + 2 months + 2 days
-% +200 days
-% 2021-04-01 + 100 days
+    % +1 year + 2 months + 2 days
+    % +200 days
+    % 2021-04-01 + 100 days
+
+Fine Window Positioning using a leading @
+    @height:-3
+    @top:14
+These pixel values are added or subtracted
+from the current position values. See 'cap' command.
 
 Create aliases for favorite commands in serv.txt file:
 
