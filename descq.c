@@ -259,7 +259,7 @@ void show_message(char pmsg[64], char smsg[64]) {
 }
 
 void list_serv() {
-    int cols = 3;
+    int cols = 2;
     int cntx = 0;
     char item[100] = {'\0'};
     list line = list_def(20, 256);
@@ -270,7 +270,7 @@ void list_serv() {
         strcpy(item, trim(line.item[0]));
         if (startswith(item, "-"))
                 continue;
-        printf("%14s  ", item);
+        printf("%35s  ", item);
         cntx++;
         if (cntx > cols-1) {
             printf("\n");
