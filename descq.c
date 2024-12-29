@@ -527,15 +527,22 @@ int main(int argc, char *argv[])
     return 0;
 }
 
- /*_______________________________________________________________________________*/
-/*______________________________END__OF__MAIN____________________________________*/
-
+      /*_______________________________________________________________________________*/
+     /*                                                                               */
+    /*                              END  OF  MAIN                                    */
+   /*_______________________________________________________________________________*/
 
 // called when window is closed
 void on_window1_destroy() {
     list_io(hist, "ehist.txt", 'w');
     list_del(hist);
     gtk_main_quit();
+}
+
+void on_time() {
+    // every 7 seconds | Esc to cancel and clear
+    gtk_entry_set_text(GTK_ENTRY(g_entry), date("%Y/%m/%d %I:%M %p"));
+    timeout(7, on_time);
 }
 
 void on_btn_dlg_close_clicked() {
@@ -797,8 +804,11 @@ void process_entry(char *out_str) {
     } else if (equals(out_str, "top")) {        // toggle window Z-order
         change_win_level();
 
-    } else if (equals(out_str, "x")) {         // exit program
+    } else if (equals(out_str, "x")) {          // exit program
         on_window1_destroy();
+
+    } else if (equals(out_str, "T")) {
+        timeout(1, on_time);                    // start the time display
 
     } else if (equals(out_str, "cap")) {        // toggle window caption bar
         if (gtk_window_get_decorated(GTK_WINDOW(g_wnd))) {
@@ -1004,6 +1014,7 @@ _Bool on_window1_key_press_event(GtkWidget *w, GdkEvent *e) {
     }
 
     if (keyval == 65307) {  // Escape key
+        alarm(0);
         gtk_entry_set_text(GTK_ENTRY(g_entry), "");
         return TRUE;
     }

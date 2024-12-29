@@ -1,8 +1,9 @@
 Quick Ref for Descq
 ===================
-descq (DeskQ) is a GUI-Internet-search-window
-with added productivity such as clipboard archiving
-and retrieval, and custom command aliasing.
+descq (DeskQ) is a GUI-Text-Command-window
+for launching Internet searches,
+clipboard archiving and retrieval, 
+and custom system command aliasing.
 
 for more help look at help_descq.pdf
 ------------------------------------
@@ -21,6 +22,7 @@ Save text in Clipboard:
 
 Other Commands:
 	x     exit the program
+	T     start the date/time display
 	es    edit serv.txt
 	eh    edit hist.txt
 	ec    edit clip.txt
@@ -30,19 +32,19 @@ Other Commands:
 	help  edit help.txt (this file)
 	list  dialog box listing saved urls
 	hist  dialog box listing save search texts
-	serv  dialog box listing my commands serv.txt
+	serv  dialog box listing your commands serv.txt
 	cap   toggle the window caption bar
 	top   toggle the window level
 	winset   save current window size and position in winmet.txt
 
    Up & Down arrow keys scroll through last 10 commands
-   Esc key clears entry field
+   Esc key clears entry field and stops time display
 
 
 Submit multiple commands or searches delimited with "|"
 
 Execute apps installed in system path or URL with "$appname"
-where $ can be $, @, or > e.g. $https://example.com
+where $ can be $, or > e.g. $https://example.com
 	>gedit
 
 Evaluate math expressions using a leading "="...
@@ -71,7 +73,7 @@ Querystring specific URL requests -
 
 	Some examples might be:
 	m,Google Maps,https://www.google.com/maps/search/
-        p,Php,http://php.net/manual-lookup.php?pattern=
+    p,Php,http://php.net/manual-lookup.php?pattern=
 	a,Amazon,https://smile.amazon.com/s/ref=nb_sb_noss_1?field-keywords=
 	u,URL,https://
     
@@ -79,7 +81,7 @@ Querystring specific URL requests -
 	the querystring:
 	
 	m:Madison Wisconsin
-	p:arrays
+	p:setcookie
 	a:mini computers
 	u:example.com
     
