@@ -79,6 +79,7 @@ _Enter_, _Tab_, or click the _action-button_ &#9744;.
 |**eq**|edit edit the search query engine URL (search.txt)|
 |**ee**|edit edit the name of your text editor (editor.txt)|
 |**top**|toggles the window level to Top or Bottom|
+|**T**|display Date/Time|
 |**help**|view this help|
 |**=**|Calculator eg. =2^2|
 |**>**|execute a system process eg. >gedit|
