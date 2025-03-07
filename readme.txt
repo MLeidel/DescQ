@@ -2,7 +2,11 @@
 You've hopefully unzipped all the files
 into a folder somewhere in your home directory. 
 
-To ensure everything is set up correctly, complete the following steps: 
+
+Steps 1 -- 4 you should NOT have to do! 
+
+Make sure to do 5.
+
 
 1. Install the following packages: 
     sudo apt-get install gcc

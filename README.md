@@ -1,38 +1,45 @@
 # _descq_ documentation
 ### for Linux
 
-This new desktop program for Linux (DescQ) is an incredibly useful tool
-for users who need quick access to system applications, commands,
-and internet queries. Writen in C it is fast and uses little resources.
+DescQ for Linux is a great way to save time and effort while increasing productivity.
 This program gives users the ability to launch apps, system commands,
 and internet queries right from the desktop, eliminating the need to
-open a terminal or browser window to access them. The user creates simple
-aliases for any task. The aliases can then be typed into the entry field
+open a terminal or browser window to access them. 
+Writen in C it is fast and uses little resources.
+The user can also create aliases that can then be typed into the entry field
 to execute the tasks. So it is easy to use and intuitive,
 providing users with the ability to quickly access information without
 having to navigate through multiple windows.
-DescQ for Linux is a great way to save time and effort while increasing productivity.
 
-For the __Windows__ version see https://github.com/MLeidel/BCBW
 
 **Features:**
-1. Save URLs and recall them later
-1. Save clipboard text and access later
-1. Start Internet searches (keeps history)
-1. Set up searches for specific services (like: Maps, Images, Amazon, ...)
-1. Set up commands to launch apps, sys commands, or URLs
+
+    1. Save URLs and recall them later ("list" and "eu")  
+    2. Save clipboard text and access later ("ec)  
+    3. Start Internet searches (keeps history "hist" and "eh")  
+    4. Set up searches for specific services (like: Maps, Images, Amazon, ...)  
+    5. Set up commands to launch apps, sys commands, or URLs  
 
 > 3 - 5 are also available at the command line.
 
-------
+---
+
 ## Installing descq
-See the [readme.txt](readme.txt) file.
+Extract the ZIP file into a folder.  
+run `setupData.sh`  
+You can figure out the rest.  
+`descq` should run without being re-compiled.
+
+NOTE: The default editor is set to `gedit`.  
+To change open the file `editor.txt.`
 
 ---
 
 descq is written in C and uses Gtk3 - so
 it integrates nicely with Linux Gtk based
-desktops.
+desktops.  
+
+Type "help" to get quick info on commands to use.
 
 ---
 
