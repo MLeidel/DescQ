@@ -52,7 +52,18 @@ char* glade_xml = "\
 <property name=\"can_focus\">False</property>\n\
 <property name=\"layout_style\">end</property>\n\
 <child>\n\
-<placeholder/>\n\
+  <object class=\"GtkButton\" id=\"btn_dlg_select\">\n\
+    <property name=\"label\">Select</property>\n\
+    <property name=\"visible\">True</property>\n\
+    <property name=\"can-focus\">True</property>\n\
+    <property name=\"receives-default\">True</property>\n\
+    <signal name=\"clicked\" handler=\"on_dlg_listbox_row_activated\" swapped=\"no\"/>\n\
+  </object>\n\
+  <packing>\n\
+    <property name=\"expand\">True</property>\n\
+    <property name=\"fill\">True</property>\n\
+    <property name=\"position\">0</property>\n\
+  </packing>\n\
 </child>\n\
 <child>\n\
 <object class=\"GtkButton\" id=\"btn_dlg_close\">\n\
@@ -92,7 +103,8 @@ char* glade_xml = "\
 <property name=\"can_focus\">False</property>\n\
 <property name=\"hexpand\">True</property>\n\
 <property name=\"vexpand\">True</property>\n\
-<signal name=\"row-activated\" handler=\"on_dlg_listbox_row_activated\" swapped=\"no\"/>\n\
+<property name=\"selection_mode\">multiple</property>\n\
+<property name=\"activate-on-single-click\">False</property>\n\
 </object>\n\
 </child>\n\
 </object>\n\
@@ -925,38 +937,43 @@ void on_entry_activate(GtkEntry *entry) {
 
 
 void on_dlg_listbox_row_activated(GtkListBox *oList, GtkListBoxRow *oRow) {
-    GtkWidget *bin;
+    //GtkWidget *bin;
     char listdata[TWOKB] = {'\0'};
     char *ptr;  // pointer used with listdata
     char url[TWOKB] = {'\0'};
+    int inx = 0;
 
-    bin = gtk_bin_get_child(GTK_BIN(oRow));
-    strcpy(listdata, gtk_label_get_text(GTK_LABEL(bin)));
-    gtk_clipboard_set_text(g_clipboard, listdata, -1);
-    // LIST (URLS) item
-    if ((indexof(listdata, " <=> http") >= 0) || (startswith(listdata, "http"))) {
-        if (ptr = strstr(listdata, " <=> ")) {
-            ptr += 5;
-        } else {
-            ptr = listdata;
-        }
-        concat(url, "xdg-open ", ptr, " &", END);
-        system(url);
-    } else {  // SERV item
-        if (ptr = strchr(listdata, ',')) {
-            *ptr = '\0';  // replace ',' with end of string \0 for line
-            commands(listdata);
-        } else {  // HIST item
-            listdata[strlen(listdata) - 14] = '\0';  // cut off the date
-            if (listdata[1] == ':') {
-                gtk_entry_set_text(GTK_ENTRY(g_entry), listdata);
-                on_entry_activate(GTK_ENTRY(g_entry));
+    GList *selected_rows = gtk_list_box_get_selected_rows(GTK_LIST_BOX(g_dlg_listbox));
+
+    for (GList *l = selected_rows; l != NULL; l = l->next) {
+        GtkListBoxRow *row = GTK_LIST_BOX_ROW(l->data);
+        GtkWidget *child = gtk_bin_get_child(GTK_BIN(row));
+        strcpy(listdata, gtk_label_get_text(GTK_LABEL(child)));
+       // LIST (URLS) item
+        if ((indexof(listdata, " <=> http") >= 0) || (startswith(listdata, "http"))) {
+            if (ptr = strstr(listdata, " <=> ")) {
+                ptr += 5;
             } else {
-                char *linecoded = malloc(TWOKB);
-                strcpy(listdata, urlencode(linecoded, listdata));
-                free(linecoded);
-                concat(url, "xdg-open ", g_sea_engine, "\"", listdata, "\"", END);
-                system(url);
+                ptr = listdata;
+            }
+            webbrowser(ptr);
+        } else {  // SERV item
+            if (ptr = strchr(listdata, ',')) {
+                *ptr = '\0';  // replace ',' with end of string \0 for line
+                commands(listdata);
+            } else {  // HIST item
+                listdata[strlen(listdata) - 14] = '\0';  // cut off the date
+                if (listdata[1] == ':') {
+                    gtk_entry_set_text(GTK_ENTRY(g_entry), listdata);
+                    on_entry_activate(GTK_ENTRY(g_entry));
+                } else {
+                    char *linecoded = malloc(TWOKB);
+                    strcpy(listdata, urlencode(linecoded, listdata));
+                    free(linecoded);
+                    concat(url, "xdg-open ", g_sea_engine, "\"", listdata, "\"", END);
+                    system(url);
+                    url[0] = '\0'; // clear the url string
+                }
             }
         }
     }
