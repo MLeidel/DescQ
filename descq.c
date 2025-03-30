@@ -105,6 +105,7 @@ char* glade_xml = "\
 <property name=\"vexpand\">True</property>\n\
 <property name=\"selection_mode\">multiple</property>\n\
 <property name=\"activate-on-single-click\">False</property>\n\
+<signal name=\"row-activated\" handler=\"on_dlg_listbox_row_activated\" swapped=\"no\"/>\n\
 </object>\n\
 </child>\n\
 </object>\n\

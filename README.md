@@ -1,32 +1,45 @@
-# _descq_ documentation
-### for Linux
+## DescQ Documentation for Linux ##
 
-DescQ for Linux is a great way to save time and effort while increasing productivity.
-This program gives users the ability to launch apps, system commands,
-and internet queries right from the desktop, eliminating the need to
-open a terminal or browser window to access them. 
-Writen in C it is fast and uses little resources.
-The user can also create aliases that can then be typed into the entry field
-to execute the tasks. So it is easy to use and intuitive,
-providing users with the ability to quickly access information without
-having to navigate through multiple windows.
+DescQ for Linux is an efficient tool designed to save time and effort while enhancing productivity. This application allows users to launch apps, execute system commands, and perform internet queries directly from the desktop, eliminating the need to open separate terminal or browser windows. Written in C, DescQ is fast and lightweight, ensuring minimal resource usage. Additionally, users can create aliases that streamline task execution by simply typing them into the entry field. Its intuitive interface enables quick access to information without navigating through multiple windows.
 
+### Features
 
-**Features:**
+#### 1 URL Management ####
 
-    1. Save URLs and recall them later ("list" and "eu")  
-    2. Save clipboard text and access later ("ec)  
-    3. Start Internet searches (keeps history "hist" and "eh")  
-    4. Set up searches for specific services (like: Maps, Images, Amazon, ...)  
-    5. Set up commands to launch apps, sys commands, or URLs  
+-   **Save URLs:** Store your favorite URLs for easy access later.  
+-   **Recall URLs:** Retrieve saved URLs using commands like `list` and `eu`.  
+-   **Launch:** multiple URLS from the entry field or from the saved URL dialog.  
+ 
+#### 2 Clipboard Management ####
 
-> 3 - 5 are also available at the command line.
+-   **Save Clipboard Text:** Store text copied to the clipboard for future use.
+-   **Access Saved Text:** Retrieve saved clipboard text using the `ec` command.
+
+#### 3 Internet Searches ####
+
+-   **Perform Searches:** Initiate internet searches directly from DescQ entry field.
+-   **Search History:** Maintain a history of your searches with commands like `hist` and `eh`.
+
+#### 4 Service-Specific Searches ####
+
+-   **Custom Searches:** Set up searches for specific services such as Maps, Images, Amazon, and more.
+
+#### 5 Command Execution ####
+
+-   **Launch Applications:** Start applications with predefined commands.
+-   **Execute System Commands:** Run system-level commands effortlessly.
+-   **Open URLs:** Access websites directly through DescQ.
+
+*Features 3 to 5 are also accessible via the command line, providing flexibility for different user preferences.*
+
+DescQ for Linux is a powerful and user-friendly tool that streamlines your workflow, making it easier to manage applications, commands, and internet activities from a single, convenient interface.
 
 ---
 
 ## Installing descq
 Extract the ZIP file into a folder.  
-run `setupData.sh`  
+**run `setupData.sh`**  
+
 You can figure out the rest.  
 `descq` should run without being re-compiled.
 
@@ -35,11 +48,7 @@ To change open the file `editor.txt.`
 
 ---
 
-descq is written in C and uses Gtk3 - so
-it integrates nicely with Linux Gtk based
-desktops.  
-
-Type "help" to get quick info on commands to use.
+Type "**help**" to get quick info on commands to use.
 
 ---
 
@@ -54,6 +63,11 @@ caption status (_winmet.txt_.)
 
 > ***above descq was positioned along side an xfce panel.***
 
+I like to position `descq` at the bottom right side of the screen.  
+Many DES have task-bar panels that will allow width variation.
+
+---
+
 ## Search Requests and Command Requests
 
 Type a web search into the entry box and hit Enter.
@@ -65,6 +79,7 @@ each with "|"
 **dogs|cats|tadpoles**
 
 ---
+**Here is a list of built-in commands.**  
 
 Activate the request you've typed by hitting
 _Enter_, _Tab_, or click the _action-button_ &#9744;.
@@ -105,8 +120,8 @@ For example: **>gimp**
 or **$gedit**
 
 If a URL follows the ">" then it will open
-it up in the browser. Without the ">" the
-URL is saved.
+it up in the browser.  
+Without the ">" the URL is saved!
 
 ---
 
@@ -114,10 +129,12 @@ Evaluate math expressions using a leading __"="__
 followed by the expression.
 
 example:
-_=24.5^3 / 2.2_
+**=24.5^3 / 2.2**
 
 > This feature requires that "bc" the Linux "Basic Calculator" 
-be installed on your system.
+be installed on your system.  
+
+`sudo apt install bc`
 
 ---
 
@@ -162,16 +179,16 @@ the window around like any other window.
 - To view and re-open saved URLs type **list** into descq and hit Enter.
 
 
-To save text from your system clipboard type **sc**
-or click the action-button &#9744; (with the _entry field empty_.)
+To save text from your system clipboard click the action button &#9744; or hit Enter with the _entry field empty_. 
+Also, typing **sc**, Enter, also saves the clipboard.
 
-To view/edit saved text type **ec**.
-Your text editor will pop-up with the _clip.txt_ file.
+To view/edit saved clipboard text type **ec**.  
+Your text editor will pop-up with the open _clip.txt_ file.
 
 ---
 
 Use the **hist** command to pop up a dialog of your
-saved searches. Click to search again.
+saved searches. Select one or more entries and click Search.
 
 ![history](images/historyShot.png "hist")
 
