@@ -1,208 +1,90 @@
-## DescQ Documentation for Linux ##
 
-DescQ for Linux is an efficient tool designed to save time and effort while enhancing productivity. This application allows users to launch apps, execute system commands, and perform internet queries directly from the desktop, eliminating the need to open separate terminal or browser windows. Written in C, DescQ is fast and lightweight, ensuring minimal resource usage. Additionally, users can create aliases that streamline task execution by simply typing them into the entry field. Its intuitive interface enables quick access to information without navigating through multiple windows.
+<center>
+# DescQ for Linux
+## Your Efficient Desktop Assistant
+</center>
 
-### Features
+**DescQ for Linux** is a lightweight and powerful application designed to enhance your productivity by allowing you to **launch apps, execute system commands, and perform internet queries directly from your desktop**. This eliminates the need to open separate terminal or browser windows, saving you time and effort. Written in C, DescQ is fast and ensures minimal resource usage. Additionally, users can **create aliases** that streamline task execution by simply typing them into the entry field. Its intuitive interface enables quick access to information without navigating through multiple windows.
 
-#### 1 URL Management ####
+<center>![DescQ](images/no_cap.png "DescQ")</center>
 
--   **Save URLs:** Store your favorite URLs for easy access later.  
--   **Recall URLs:** Retrieve saved URLs using commands like `list` and `eu`.  
--   **Launch:** multiple URLS from the entry field or from the saved URL dialog.  
- 
-#### 2 Clipboard Management ####
+## Key Features
 
--   **Save Clipboard Text:** Store text copied to the clipboard for future use.
--   **Access Saved Text:** Retrieve saved clipboard text using the `ec` command.
+DescQ offers a range of features accessible through its intuitive interface:
 
-#### 3 Internet Searches ####
+*   **URL Management**:
+    *   **Save URLs**: Easily store your favorite URLs for easy access later. To save a URL, copy or type it into descq and hit Enter.
+    *   **Recall URLs**: Retrieve saved URLs using commands like **`list`** and **`eu`**, or through the saved URL dialog. Typing **`list`** opens a dialog with saved URLs.
+    *   **Launch Multiple URLs**: Open several URLs at once directly from the entry field or the saved URLs dialog.
 
--   **Perform Searches:** Initiate internet searches directly from DescQ entry field.
--   **Search History:** Maintain a history of your searches with commands like `hist` and `eh`.
+<center>![URLS](images/URLshot.png "URLS")</center>
 
-#### 4 Service-Specific Searches ####
+*   **Clipboard Management**:
+    *   **Save Clipboard Text**: Store text copied to the clipboard for future use. This can be done by clicking the action button (☐), hitting Enter with an empty entry field, or typing **`sc`**.
+    *   **Access Saved Text**: Retrieve and edit saved clipboard text using the **`ec`** command, which opens the **`clips.txt`** file in your configured text editor. Saved clippings will open in the text editor.
 
--   **Custom Searches:** Set up searches for specific services such as Maps, Images, Amazon, and more.
+*   **Internet Searches**:
+    *   **Perform Searches**: Initiate internet searches directly from the DescQ entry field. Simply type your search phrase and hit Enter.
+    *   **Search History**: Maintain a history of your searches. Access and reuse previous searches using the **`hist`** command to open a dialog or the **`eh`** command to edit the **`hist.txt`** file.
+    *   **Multiple Searches**: Perform multiple searches simultaneously by separating your queries with a "|" (e.g., `dogs|cats|tadpoles`).
 
-#### 5 Command Execution ####
+*   **Service-Specific Searches (Website Directed Searches)**:
+    *   Set up searches for specific services such as Maps, Images, Amazon, and more by editing the **`serv.txt`** file.
+    *   Define a unique single-letter or number prefix followed by a name and the website URL with its query string format (e.g., `i,Google Images,http://images.google.com/images?q=`).
+    *   Use these custom searches by typing the prefix followed by a colon and your search term (e.g., `i:wallpaper for Linux Mint`). Whatever you enter after `letter:` will get appended to the website querystring.
 
--   **Launch Applications:** Start applications with predefined commands.
--   **Execute System Commands:** Run system-level commands effortlessly.
--   **Open URLs:** Access websites directly through DescQ.
+    *   Example of code from `serv.txt` file:  
+    
+                    ...
+                    xed, xed &
+                    youtube, firefox https://youtube.com &
+                    zoom, https://us04web.zoom.us/meeting
+                    ---- SERVICES ---- ! Do Not Remove This Line !
+                    a, Amazon, https://amazon.com/s/ref=nb_sb_noss_1?field-keywords=
+                    m, Google Maps, https://www.google.com/maps/search/
+                    y, YouTube, https://www.youtube.com/results?search_query=
+                    s, aspell, sp 
+                    ...
 
-*Features 3 to 5 are also accessible via the command line, providing flexibility for different user preferences.*
+*   **Command Execution**:
+    *   **Launch Applications**: Start applications with predefined commands or by prefixing the application name with **`$`** or **`>`** (e.g., `$gedit` or `>gimp`). Directly execute an app installed on your system by prefixing it with one of these characters.
+    *   **Execute System Commands**: Run system-level commands effortlessly by prefixing them with **`>`** (e.g., `>shutdown now`).
+    *   **Open URLs (via command)**: Access websites directly by prefixing the URL with **`>`** (e.g., `>https://github.com`). Note that a URL without the leading `>` is saved and may be recalled with the **`list`** command.
+    *   **Aliases**: Create aliases for frequently used URLs or system commands in the **`serv.txt`** file for quick access. The format is `Alias, {URL | fullpath-command-line}` (e.g., `git,https://github.com` or `dev, dev.sh`). Access these via the alias name. DescQ will match on leading character substrings of your alias.
 
-DescQ for Linux is a powerful and user-friendly tool that streamlines your workflow, making it easier to manage applications, commands, and internet activities from a single, convenient interface.
+*   **Built-in Utilities**:
+    *   **Calculator**: Evaluate math expressions using a leading **`=`** followed by the expression (e.g., `=24.5^3 / 2.2`). This feature requires that "**bc**" the Linux "**Basic Calculator**" be installed on your system (`sudo apt install bc`).
+    *   **Date/Time**: Display the current date and time by typing **`T`**.
+    *   **Date Math**: Calculate future or past dates using a leading **`%`** followed by an offset expression (see bash **`date`** command syntax, e.g., `%+5 days`, `%-4 weeks`, `%2021-04-01 + 100 days`). The response will always be in the `%Y-%m-%d` format.
+    *   **Window Positioning**:
+        *   Toggle the window caption bar on and off using the **`cap`** command.
+        *   Save the current window geometry and caption status using the **`winset`** command, which saves this information to **`winmet.txt`**.
+        *   Fine-tune the window position and size in undecorated mode using the **`@`** command with pixel adjustments (e.g., `@top:-20`, `@left:+17`, `@width:+210`, `@height:-3`). These pixel values are added or subtracted from the current position values!
+        *   Toggle the window level to be always on top or at the bottom using the **`top`** command.
+    *   **Help**: View a "cheet-sheet" of available commands by typing **`help`**.
 
----
+## Getting Started
 
-## Installing descq
-Extract the ZIP file into a folder.  
-**run `setupData.sh`**  
+1.  **Download and Extract**: Extract the ZIP file into a folder.
+2.  **Run Setup**: Navigate to the extracted folder in your terminal and execute the `setupData.sh` script. This copies descq's files to `~/.config/descq/data`.
+3.  **Run DescQ**: Execute the `descq` file to launch the application. Note that `descq` may be copied to any directory in the system's path.
 
-You can figure out the rest.  
-`descq` should run without being re-compiled.
+## Using DescQ
 
-NOTE: The default editor is set to `gedit`.  
-To change open the file `editor.txt.`
-
----
-
-Type "**help**" to get quick info on commands to use.
-
----
-
-Type __cap__ to _toggle_ the
-window caption bar on and off.
-Position descq on your desktop.
-Then type __winset__ to save the windows geometry and
-caption status (_winmet.txt_.)
-
-![caption](images/Deskq_cap.png)
-![desktop](images/deskq_on_my_desktop.png)
-
-> ***above descq was positioned along side an xfce panel.***
-
-I like to position `descq` at the bottom right side of the screen.  
-Many DES have task-bar panels that will allow width variation.
-
----
-
-## Search Requests and Command Requests
-
-Type a web search into the entry box and hit Enter.
-
-Multiple searches or commands are made by delimiting
-each with "|"
-
->For example, perform three searches with one command:
-**dogs|cats|tadpoles**
-
----
-**Here is a list of built-in commands.**  
-
-Activate the request you've typed by hitting
-_Enter_, _Tab_, or click the _action-button_ &#9744;.
-
-| Type this | action/description |
-| :----- | :---- |
-|_a URL_|saves URL to a list|
-|_search text_|starts a search in browser|
-|**sc** or _action-button_|saves clipboard contents|
-|**list**|opens dialog with list of saved URLs|
-|**hist**|opens dialog with list of saved search texts|
-|**serv**|opens dialog with list of your commands|
-|**cap**|toggles window caption bar|
-|**winset**|saves window size/position settings|
-|**eu**|edit saved URL list (urls.lst)|
-|**ec**|edit saved clips text (clips.txt)|
-|**eh**|edit saved search history (hist.csv)|
-|**es**|edit custom command / services file (serv.txt)|
-|**eq**|edit edit the search query engine URL (search.txt)|
-|**ee**|edit edit the name of your text editor (editor.txt)|
-|**top**|toggles the window level to Top or Bottom|
-|**T**|display Date/Time|
-|**help**|view this help|
-|**=**|Calculator eg. =2^2|
-|**>**|execute a system process eg. >gedit|
-|**%**|date Math eg. %+100 days|
-|**@**|widget pixel positioning eg. @top:-12|
-|**up/dn arrow** key|recall last 10 entries|
-|**Esc** key|clear entry field|
-
----
-
-Directly execute an app installed on your system
-by prefixing it with one of these characters:
-__"$"__ or __">"__
-
-For example: **>gimp**
-or **$gedit**
-
-If a URL follows the ">" then it will open
-it up in the browser.  
-Without the ">" the URL is saved!
-
----
-
-Evaluate math expressions using a leading __"="__
-followed by the expression.
-
-example:
-**=24.5^3 / 2.2**
-
-> This feature requires that "bc" the Linux "Basic Calculator" 
-be installed on your system.  
-
-`sudo apt install bc`
-
----
-
-Calculate future or past dates using a leading __"%"__
-followed by an offset expresion (see bash 'date' command.)
-
-examples: 
->
-`%+5 days`  
-`%-4 weeks`  
-`%2021-04-01 + 100 days`  
-
-The response will always be in the `%Y-%m-%d` format.
-
-AVAILABLE ONLY FOR LINUX SYSTEMS
-
----
-
-Window/widget fine postioning can be tweaked while
-the window _is in un-decorated mode_ by using
-the __"@"__ command like so:
->
-`@top:+20`  
-`@top:-20`  
-`@left:+17`  
-`@width:+210`  
-`@height:-3`  
-
-These pixel values are added or subtracted
-from the current position values!  
-
-When position is correct then use the "winset"
-command to save the window position.
-
-For broader positioning use the "cap" command
-to toggle into "decorated" mode, and then drag
-the window around like any other window.
-
-### Save and recall URLs and text clippings.
-
-- To save a URL copy or type it into descq and hit Enter.
-- To view and re-open saved URLs type **list** into descq and hit Enter.
+*   **Interacting with DescQ**: Type your requests, commands, or queries into the DescQ entry field and activate them by hitting **Enter**, **Tab**, or clicking the **action-button** ☐.
+*   **Saving URLs**: To save a URL, copy or type it into descq and hit Enter. A URL without the leading `>` is saved.
+*   **Saving Clipboard Text**: To save text from your system clipboard, click the action button ☐ or hit Enter with the entry field empty, or type **`sc`**.
+*   **Recalling Saved Items**: Use the **`list`** command to open a dialog of your saved URLs or the **`hist`** command to pop up a dialog of your saved searches. Select one or more entries and click Select. Double-click to instantly repeat one item.
+*   **Editing Configuration Files**: Use the following commands to edit DescQ's configuration files in your default text editor (gedit by default):
+    *   **`ec`**: edit saved clips text (**`clips.txt`**).
+    *   **`eh`**: edit saved search history (**`hist.txt`**).
+    *   **`es`**: edit custom command / services file (**`serv.txt`**).
+    *   **`eq`**: edit the search query engine URL (**`search.txt`**).
+    *   **`ee`**: edit the name of your text editor (**`editor.txt`**). The text editor is used by descq for maintaining several of its text files.
 
 
-To save text from your system clipboard click the action button &#9744; or hit Enter with the _entry field empty_. 
-Also, typing **sc**, Enter, also saves the clipboard.
-
-To view/edit saved clipboard text type **ec**.  
-Your text editor will pop-up with the open _clip.txt_ file.
-
----
-
-Use the **hist** command to pop up a dialog of your
-saved searches. Select one or more entries and click Search.
-
-![history](images/historyShot.png "hist")
-
----
-
-### Command aliases and website directed searches
-
-Type **es** to edit the _serv.txt_ file.
-
-The _serv.txt_ file holds your aliases with
-custom commands and URLs.
-The entries in _serv.txt_ take two forms:
-1. Aliases: URL links and system commands
-1. Website Directed Searches
+## Command Aliases and Website Searches
+The **`serv.txt`** file holds your aliases with custom commands and URLs. The entries in **`serv.txt`** take two forms: Aliases and Website Directed Searches. Create your commands in **`serv.txt`** in ascending order which should allow for unique substrings.
 
 ### Aliases
  Aliases can be either URLs or system commands.
@@ -213,30 +95,30 @@ The entries in _serv.txt_ take two forms:
 
  To create an alias first invent a name for
  the command. The name is simply a "key" (alias)
- that you will type in to launch the command.
+ that you will type to launch the command.
 
- #### examples from a serv.txt file:
+**examples from a `serv.txt` file:**
 
- ```python
-  git,https://github.com
-  dev,dev.sh
-  shutdown, shutdown now
-  reboot,reboot
-  drive, https://drive.google.com
- ```
 
- To perform these commands in descq you would type in
+      git,https://github.com  
+      dev, dev.sh  
+      shutdown, shutdown now  
+      reboot,reboot  
+      drive, https://drive.google.com  
+
+
+ To perform these commands in descq you would type 
  the alias and hit Enter or click the action button.
- _descq_ will match on _leading_ characters or substrings
+ _descq_ will match on _leading_ character substrings
  of your alias.
- >Note: if you create an alias in _serv.txt_ and then
+ >Note: if you create an alias in `serv.txt` and then
  mistype it when using it, the mistyped alias will
  be treated as a __search__ and launch it in the
  browser.
 
- Using the above example aliases:
+ **Using the above example aliases:**
 
- | typed | resulting action |
+ | type | action |
  | :---------- | :-------------------- |
  |_git_|opens github.com in your browser|
  |_dev_|executes your shell script to ... ?|
@@ -246,16 +128,16 @@ The entries in _serv.txt_ take two forms:
  |_reboot_|reboots your machine|
  |_reb_|reboots your machine|
 
- It helps to create your commands in _serv.txt_
- in assending order which should allow for unique substrings
- as your commands become familiar from use.
+Create your commands in `serv.txt`
+in assending order which should allow for unique substrings.  
+Your commands will hopefully become familiar from use.
 
  ---
 
 ### Website directed searches
  These are URLs that may have a ?querystring after
  the domain and path part. To setup a web directed
- search in _serv.txt_ make sure that the
+ search in `serv.txt` make sure that the
  first character of each line begins with
  a single letter (a-z, 1-0).
 
@@ -267,77 +149,68 @@ The entries in _serv.txt_ take two forms:
  _**You may have to experiment with each website to learn
  what format they expect for search queries**_
 
- #### Some examples:
+**Some examples:**
 
- ```python
- a,Amazon,https://smile.amazon.com/s/ref=nb_sb_noss_1?field-keywords=
 
- i,Google Images,http://images.google.com/images?q=
+         a,Amazon,https://smile.amazon.com/s/ref=nb_sb_noss_1?field-keywords=
+        
+         i,Google Images,http://images.google.com/images?q=
+        
+         p,Php,http://php.net/manual-lookup.php?pattern=
+        
+         m,Google Maps,https://www.google.com/maps/search/
 
- p,Php,http://php.net/manual-lookup.php?pattern=
 
- m,Google Maps,https://www.google.com/maps/search/
-
- ```
 Use like this:
 
->a:mini computers  
-i:wallpaper for Linux Mint  
-p:preg_split  
-m:arlington, tx  
+        a:mini computers  
+        i:wallpaper for Linux Mint  
+        p:preg_split  
+        m:arlington, tx  
 
 Note that what ever you enter after __letter:__ will get
 appended to the website querystring that you've set up
-in _serv.txt_.
+in `serv.txt`.
 
  ![services](images/servicex1.png)
 
 It may take a little work to discover some of these
 querystrings but many do exist. _descq_ comes with
-several already set up.
+several already set up, but may have changed over time.
 
 ---
 
-#### Specify the text editor
-The _"e\_"_ commands for _descq_ require a simple text editor.
-Put the name of your installed text editor into the first
-line of the _editor.txt_ file.
-___gedit___ is preset.
+## Positioning DescQ on Your Desktop
 
-To change this later use the "ee" command.
+1.  Type **`cap`** to toggle the window caption bar on and off.
+2.  Position DescQ on your desktop.
+3.  Then type **`winset`** to save the windows geometry and caption status (**`winmet.txt`**).
+4.  Window/widget fine positioning can be tweaked while the window is in un-decorated mode by using the **`@`** command.
+5.  When the position is correct then use the **`winset`** command to save the window position. For broader positioning use the **`cap`** command to toggle into "decorated" mode, and then drag the window around like any other window.
 
----
+## Important Notes
 
-#### Specify the Search Engine
-Descq uses the DuckDuckGo search engine as default.
-Edit "search.txt" (or use the __ee__ command) to change it to
-some other URL such as:
+*   DescQ does not store any browser history and bookmarks.
+*   Note: if you create an alias in **`serv.txt`** and then mistype it when using it, the mistyped alias will be treated as a search and launch it in the browser.
+*   It may take a little work to discover some of these querystrings but many do exist. descq comes with several already set up, but may have changed over time.
+*   DescQ uses the DuckDuckGo search engine as default. Edit **`search.txt`** (or use the **`eq`** command) to change it. Restart DescQ after changing this setting. One of the advantages of DDG is its BANG query feature.
+*   The default text editor is set to **`gedit`**. To change it, edit the **`editor.txt`** file and restart descq, or use the **`ee`** command. The text editor is used by descq for maintaining several of its text files.
 
-   - https://www.google.com/search?q=
-   - https://duckduckgo.com/?q=
-   - https://www.bing.com/search?q=
-   - https://scholar.google.com/scholar?q=
-   - https://search.yahoo.com/search?p=
+## DescQ System Files
 
----
+Here's a breakdown of the files and their purpose according to the sources:
 
-One of the advantages of DDG is its
-BANG query feature. Checkout
-https://duckduckgo.com/bang
-to find out how it works.
+*   **clip.txt**: Stores saved clipboard text.
+*   **serv.txt**: Contains command aliases and website-directed searches.
+*   **winmet.txt**: Saves the window geometry and caption status.
+*   **editor.txt**: Specifies the name of the default text editor used by DescQ.
+*   **urls.txt**: Stores a list of saved URLs.
+*   **search.txt**: Holds the URL for the preferred search engine.
+*   **hist.txt**: Contains the history of search queries.
 
-#### List of descq System Files
+## MX
 
-| | |
-| ----- | ----- |
-|_clip.txt_ |text file of clippings|
-|_descq_ |Linux executable|
-|_hist.txt_ |text file of search history|
-|_serv.txt_ |text file of $ commands and special querys|
-|_winmet.txt_ |window geometry ...|
-|_editor.txt_ |name of your text editor program|
-|_urls.txt_ |text file of saved URLs|
-|_search.txt_ |querystring to search with you favorite search engine|
+![DescQ & MX Linux](images/descq_MX.png)
 
 ## DescQ & Pop-OS
 
@@ -345,11 +218,7 @@ to find out how it works.
 
 ## LMDE
 
-![DescQ & Pop-OS](images/screen_LMDE_crop.png)
-
-## MX
-
-![DescQ & Pop-OS](images/screen_MX_crop.png)
+![DescQ & LMDE](images/screen_LMDE_crop.png)
 
 #### end
 
