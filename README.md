@@ -6,7 +6,9 @@
 
 **DescQ for Linux** is a lightweight and powerful application designed to enhance your productivity by allowing you to **launch apps, execute system commands, and perform internet queries directly from your desktop**. This eliminates the need to open separate terminal or browser windows, saving you time and effort. Written in C, DescQ is fast and ensures minimal resource usage. Additionally, users can **create aliases** that streamline task execution by simply typing them into the entry field. Its intuitive interface enables quick access to information without navigating through multiple windows.
 
-<center>![DescQ](images/no_cap.png "DescQ")</center>
+<center>
+![DescQ](images/no_cap.png "DescQ")
+</center>
 
 ## Key Features
 
