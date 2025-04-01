@@ -1,18 +1,18 @@
 
-<center>
+
 
 # DescQ for Linux
 ## Your Efficient Desktop Assistant
 
-</center>
+
 
 **DescQ for Linux** is a lightweight and powerful application designed to enhance your productivity by allowing you to **launch apps, execute system commands, and perform internet queries directly from your desktop**. This eliminates the need to open separate terminal or browser windows, saving you time and effort. Written in C, DescQ is fast and ensures minimal resource usage. Additionally, users can **create aliases** that streamline task execution by simply typing them into the entry field. Its intuitive interface enables quick access to information without navigating through multiple windows.
 
-<center>
+
 
 ![DescQ](images/no_cap.png)
 
-</center>
+
 
 ## Key Features
 
@@ -23,11 +23,11 @@ DescQ offers a range of features accessible through its intuitive interface:
     *   **Recall URLs**: Retrieve saved URLs using commands like **`list`** and **`eu`**, or through the saved URL dialog. Typing **`list`** opens a dialog with saved URLs.
     *   **Launch Multiple URLs**: Open several URLs at once directly from the entry field or the saved URLs dialog.
 
-<center>
+
 
 ![URLS](images/URLshot.png)
 
-</center>
+
 
 *   **Clipboard Management**:
     *   **Save Clipboard Text**: Store text copied to the clipboard for future use. This can be done by clicking the action button (☐), hitting Enter with an empty entry field, or typing **`sc`**.
@@ -162,7 +162,7 @@ Your commands will hopefully become familiar from use.
 **Some examples:**
 
 
-         a,Amazon,https://smile.amazon.com/s/ref=nb_sb_noss_1?field-keywords=
+         a,Amazon,https://amazon.com/s/ref=nb_sb_noss_1?field-keywords=
         
          i,Google Images,http://images.google.com/images?q=
         
@@ -198,7 +198,7 @@ several already set up, but may have changed over time.
 4.  Window/widget fine positioning can be tweaked while the window is in un-decorated mode by using the **`@`** command.
 5.  When the position is correct then use the **`winset`** command to save the window position. For broader positioning use the **`cap`** command to toggle into "decorated" mode, and then drag the window around like any other window.
 
- <center>![decorated](images/with_cap.png)  ![undecorated](images/no_cap.png)</center>
+ ![decorated](images/with_cap.png)  ![undecorated](images/no_cap.png)
 
 ---
 
