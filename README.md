@@ -1,13 +1,17 @@
 
 <center>
+
 # DescQ for Linux
 ## Your Efficient Desktop Assistant
+
 </center>
 
 **DescQ for Linux** is a lightweight and powerful application designed to enhance your productivity by allowing you to **launch apps, execute system commands, and perform internet queries directly from your desktop**. This eliminates the need to open separate terminal or browser windows, saving you time and effort. Written in C, DescQ is fast and ensures minimal resource usage. Additionally, users can **create aliases** that streamline task execution by simply typing them into the entry field. Its intuitive interface enables quick access to information without navigating through multiple windows.
 
 <center>
-![DescQ](images/no_cap.png "DescQ")
+
+![DescQ](images/no_cap.png)
+
 </center>
 
 ## Key Features
@@ -19,7 +23,11 @@ DescQ offers a range of features accessible through its intuitive interface:
     *   **Recall URLs**: Retrieve saved URLs using commands like **`list`** and **`eu`**, or through the saved URL dialog. Typing **`list`** opens a dialog with saved URLs.
     *   **Launch Multiple URLs**: Open several URLs at once directly from the entry field or the saved URLs dialog.
 
-<center>![URLS](images/URLshot.png "URLS")</center>
+<center>
+
+![URLS](images/URLshot.png)
+
+</center>
 
 *   **Clipboard Management**:
     *   **Save Clipboard Text**: Store text copied to the clipboard for future use. This can be done by clicking the action button (☐), hitting Enter with an empty entry field, or typing **`sc`**.
