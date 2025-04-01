@@ -188,6 +188,10 @@ several already set up, but may have changed over time.
 4.  Window/widget fine positioning can be tweaked while the window is in un-decorated mode by using the **`@`** command.
 5.  When the position is correct then use the **`winset`** command to save the window position. For broader positioning use the **`cap`** command to toggle into "decorated" mode, and then drag the window around like any other window.
 
+ <center>![decorated](images/with_cap.png)  ![undecorated](images/no_cap.png)</center>
+
+---
+
 ## Important Notes
 
 *   DescQ does not store any browser history and bookmarks.
