@@ -4,7 +4,7 @@
 
 **DescQ for Linux** is a lightweight and powerful application designed to enhance your productivity by allowing you to **launch apps, execute system commands, and perform internet queries directly from your desktop**. This eliminates the need to open separate terminal or browser windows, saving you time and effort. Written in C, DescQ is fast and ensures minimal resource usage. Additionally, users can **create aliases** that streamline task execution by simply typing them into the entry field. Its intuitive interface enables quick access to information without navigating through multiple windows.
 
-![DescQ](images/no_cap.png) [Deep Dive Audio](https://michaelleidel.net/descq "Deep Dive")
+![DescQ](images/no_cap.png) [Deep Dive Audio](https://michaelleidel.net/descq "Deep Dive") (opens new web page)
 
 ## Key Features
 [linktext](http:// "title")
@@ -51,6 +51,7 @@ DescQ offers a range of features accessible through its intuitive interface:
     *   **Aliases**: Create aliases for frequently used URLs or system commands in the **`serv.txt`** file for quick access. The format is `Alias, {URL | fullpath-command-line}` (e.g., `git,https://github.com` or `dev, dev.sh`). Access these via the alias name. DescQ will match on leading character substrings of your alias.
 
 *   **Built-in Utilities**:
+    *   **Random String**: Entering **`rs`** returns random string of characters.
     *   **Calculator**: Evaluate math expressions using a leading **`=`** followed by the expression (e.g., `=24.5^3 / 2.2`). This feature requires that "**bc**" the Linux "**Basic Calculator**" be installed on your system (`sudo apt install bc`).
     *   **Date/Time**: Display the current date and time by typing **`T`**.
     *   **Date Math**: Calculate future or past dates using a leading **`%`** followed by an offset expression (see bash **`date`** command syntax, e.g., `%+5 days`, `%-4 weeks`, `%2021-04-01 + 100 days`). The response will always be in the `%Y-%m-%d` format.
@@ -74,11 +75,11 @@ DescQ offers a range of features accessible through its intuitive interface:
 *   **Saving Clipboard Text**: To save text from your system clipboard, click the action button ☐ or hit Enter with the entry field empty, or type **`sc`**.
 *   **Recalling Saved Items**: Use the **`list`** command to open a dialog of your saved URLs or the **`hist`** command to pop up a dialog of your saved searches. Select one or more entries and click Select. Double-click to instantly repeat one item.
 *   **Editing Configuration Files**: Use the following commands to edit DescQ's configuration files in your default text editor (gedit by default):
-    *   **`ec`**: edit saved clips text (**`clips.txt`**).
-    *   **`eh`**: edit saved search history (**`hist.txt`**).
-    *   **`es`**: edit custom command / services file (**`serv.txt`**).
-    *   **`eq`**: edit the search query engine URL (**`search.txt`**).
-    *   **`ee`**: edit the name of your text editor (**`editor.txt`**). The text editor is used by descq for maintaining several of its text files.
+    *   **`ec`** edit saved clips text (**`clips.txt`**).
+    *   **`eh`** edit saved search history (**`hist.txt`**).
+    *   **`es`** edit custom command / services file (**`serv.txt`**).
+    *   **`eq`** edit the search query engine URL (**`search.txt`**).
+    *   **`ee`** edit the name of your text editor (**`editor.txt`**). The text editor is used by descq for maintaining several of its text files.
 
 
 ## Command Aliases and Website Searches

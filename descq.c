@@ -743,6 +743,65 @@ const char * get_date_result(const char * expr) {
     return chomp(path);
 }
 
+char random_choice(const char *str) {
+    // returns a random character from a target string of charracters
+    int len = strlen(str);
+    if (len == 0) {
+        return '\0'; // Or handle empty string case differently
+    }
+    int index = rand() % len;
+    return str[index];
+}
+
+char* compcode(int size) {
+    // return random string for passwords
+    const char *sDigit = "09876543210987654321098765432109";
+    const char *sUCase = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+    const char *sLCase = "abcdefghijkmnopqrstuvwxyz";
+    const char *sPunct = ":+_=-*&%$#@@#$%^&*+";
+    char *sGenPW = NULL; // Dynamically allocate string
+    char *sNewPW = NULL; // Dynamically allocate string
+    int x;
+    char khar;
+    char kharprev;
+
+    // Combine character sets
+    sGenPW = (char *)malloc(strlen(sLCase) + strlen(sUCase) + strlen(sDigit) + strlen(sPunct) + 1);
+    if (sGenPW == NULL) {
+        perror("malloc failed for sGenPW");
+        return NULL; // Or handle the error appropriately
+    }
+    strcpy(sGenPW, sLCase);
+    strcat(sGenPW, sUCase);
+    strcat(sGenPW, sDigit);
+    strcat(sGenPW, sPunct);
+
+
+    // Assemble the new code (16 characters)
+    sNewPW = (char *)malloc(size+1); // 16 characters + null terminator
+    if (sNewPW == NULL) {
+        perror("malloc failed for sNewPW");
+        free(sGenPW); // Free previously allocated memory
+        return NULL; // Or handle the error appropriately
+    }
+    sNewPW[0] = '\0';  // Initialize sNewPW to an empty string
+
+    kharprev = ' ';
+    for (x = 0; x < size; x++) {
+        khar = random_choice(sGenPW);
+        if (khar == kharprev) {
+            x--;
+            continue;
+        }
+        kharprev = khar;
+        sNewPW[x] = khar;
+        sNewPW[x+1] = '\0'; // Ensure null termination after each character
+    }
+
+    free(sGenPW); // Free the dynamically allocated memory for sGenPW
+    return sNewPW; // Return the generated password string
+}
+
 
 void process_entry(char *out_str) {
     FILE *fh;
@@ -857,6 +916,11 @@ void process_entry(char *out_str) {
         strcpy(action, out_str+1);
         const char * res = get_bc_result(action);
         gtk_entry_set_text(GTK_ENTRY(g_entry), res);
+
+    } else if (equals(out_str, "rs")) {  // get a long random string for password
+        strcpy(action, out_str+1);
+        const char * pw = compcode(25);
+        gtk_entry_set_text(GTK_ENTRY(g_entry), pw);
 
     } else if (out_str[0] == '%') {  // evaluate this date addition expression
         strcpy(action, out_str+1);
