@@ -2,7 +2,7 @@ Quick Ref for Descq
 ===================
 descq (DeskQ) is a GUI-Text-Command-window
 for launching Internet searches,
-clipboard archiving and retrieval, 
+clipboard archiving and retrieval,
 and custom system command aliasing.
 
 for more help look at help_descq.pdf
@@ -29,7 +29,8 @@ Other Commands:
 	eu    edit urls.txt
 	ee    edit editor.txt
 	eq    edit search.txt
-	help  edit help.txt (this file)
+	help  view help.txt (this file)
+	rs    random string
 	list  dialog box listing saved urls
 	hist  dialog box listing save search texts
 	serv  dialog box listing your commands serv.txt
@@ -76,15 +77,15 @@ Querystring specific URL requests -
     p,Php,http://php.net/manual-lookup.php?pattern=
 	a,Amazon,https://smile.amazon.com/s/ref=nb_sb_noss_1?field-keywords=
 	u,URL,https://
-    
+
     Note: Text from the Entry field is appended to the end of
 	the querystring:
-	
+
 	m:Madison Wisconsin
 	p:setcookie
 	a:mini computers
 	u:example.com
-    
+
 
 Files at /usr/local/descq-data/
 

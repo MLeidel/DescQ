@@ -1,0 +1,284 @@
+<h1>Quick Reference for Descq</h1>
+<p><a href="README.html" title="Descq">Details</a></p>
+<h2>Overview</h2>
+<ul>
+<li><strong>Searches:</strong> Launch Internet searches effortlessly.</li>
+<li><strong>Clipboard Archiving:</strong> Save and retrieve clipboard text.</li>
+<li><strong>URL Management:</strong> Quickly archive and re-access URLs.</li>
+<li><strong>Custom Commands:</strong> Define and run personalized command aliases.</li>
+</ul>
+<hr />
+<h2>Basic Usage</h2>
+<ul>
+<li>
+<p><strong>General Search:</strong><br />
+  Type a search query and press <strong>Enter</strong>.</p>
+</li>
+<li>
+<p><strong>Save a URL:</strong><br />
+    Type, paste, or drag &amp; drop the URL into the entry box.<br />
+    Press <strong>Enter</strong> or click the ■ button.</p>
+</li>
+<li>
+<p><strong>Save Clipboard Text:</strong><br />
+    Type <code>sc</code> and press <strong>Enter</strong> or click the ■ button.<br />
+    If the entry box is empty, simply clicking ■ will save the current clipboard text.</p>
+</li>
+<li>
+<p><strong>List of saved URLS</strong><br />
+    Type <code>list</code> and press <strong>Enter</strong> or click the ■ button.<br />
+    A dialog of saved urls appears. Select one or more to re-launch in browser.</p>
+</li>
+<li>
+<p><strong>History of save searches</strong><br />
+    Type <code>hist</code> and press <strong>Enter</strong> or click the ■ button.<br />
+    A dialog of saved search queries appears. Select one or more to re-launch in browser.</p>
+</li>
+</ul>
+<hr />
+<h2>Other Commands</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>Exit the program.</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>Start the date/time display.</td>
+</tr>
+<tr>
+<td><code>es</code></td>
+<td>Edit the <code>serv.txt</code> file.</td>
+</tr>
+<tr>
+<td><code>eh</code></td>
+<td>Edit the <code>hist.txt</code> file.</td>
+</tr>
+<tr>
+<td><code>ec</code></td>
+<td>Edit the <code>clip.txt</code> file.</td>
+</tr>
+<tr>
+<td><code>eu</code></td>
+<td>Edit the <code>urls.txt</code> file.</td>
+</tr>
+<tr>
+<td><code>ee</code></td>
+<td>Edit the <code>editor.txt</code> file.</td>
+</tr>
+<tr>
+<td><code>eq</code></td>
+<td>Edit the <code>search.txt</code> file.</td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td>View the help file (this document).</td>
+</tr>
+<tr>
+<td><code>rs</code></td>
+<td>Random String</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td>Display a dialog box listing saved URLs.</td>
+</tr>
+<tr>
+<td><code>hist</code></td>
+<td>Display a dialog box listing search history.</td>
+</tr>
+<tr>
+<td><code>serv</code></td>
+<td>Display a dialog box listing your <code>serv.txt</code> commands.</td>
+</tr>
+<tr>
+<td><code>cap</code></td>
+<td>Toggle the window caption bar.</td>
+</tr>
+<tr>
+<td><code>top</code></td>
+<td>Toggle the window level (topmost on screen).</td>
+</tr>
+<tr>
+<td><code>winset</code></td>
+<td>Save current window size and position in <code>winmet.txt</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional Keyboard Shortcuts:</strong></p>
+<ul>
+<li><strong>Up &amp; Down Arrow Keys:</strong> Scroll through the last 10 commands.</li>
+<li><strong>Esc Key:</strong> Clear the entry field and stop the time display.</li>
+</ul>
+<hr />
+<h2>Advanced Features</h2>
+<h3>Submitting Multiple Commands or Searches</h3>
+<ul>
+<li><strong>Delimiter:</strong> Use the pipe symbol <code>|</code> to separate multiple commands or searches in a single input.</li>
+</ul>
+<h3>Execute Applications or URLs from the Command Line</h3>
+<ul>
+<li><strong>Syntax:</strong> Prefix the command or URL with <code>$</code> or <code>&gt;</code>.</li>
+<li>Example:  <ul>
+<li><code>$https://example.com</code>  </li>
+<li><code>&gt;gedit</code></li>
+</ul>
+</li>
+</ul>
+<h3>Evaluate Mathematical Expressions</h3>
+<ul>
+<li><strong>Syntax:</strong> Begin with <code>=</code></li>
+<li>Example:  <ul>
+<li><code>=3^5 / 2.5</code></li>
+</ul>
+</li>
+</ul>
+<h3>Evaluate Date Calculations</h3>
+<ul>
+<li><strong>Syntax:</strong> Begin with <code>%</code></li>
+<li>Examples:<ul>
+<li><code>% +1 year + 2 months + 2 days</code></li>
+<li><code>% +200 days</code></li>
+<li><code>% 2021-04-01 + 100 days</code></li>
+</ul>
+</li>
+</ul>
+<h3>Fine Window Positioning</h3>
+<ul>
+<li><strong>Syntax:</strong> Begin with <code>@</code></li>
+<li>Examples:<ul>
+<li><code>@height:-3</code></li>
+<li><code>@top:14</code></li>
+</ul>
+</li>
+<li><em>Note:</em> The pixel values are adjusted relative to the current window position. Refer to the <code>cap</code> command for details.</li>
+</ul>
+<hr />
+<h2>Creating Custom Aliases</h2>
+<p>Aliases allow you to create shortcuts for frequently used commands. Define them in the <code>serv.txt</code> file with the following format:</p>
+<pre><code>alias_name, command_or_URL &amp;
+</code></pre>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>
+<p><strong>News Update:</strong><br />
+<code>news, https://microsoftnews.msn.com &amp;</code></p>
+</li>
+<li>
+<p><strong>Reboot System:</strong><br />
+<code>reboot, reboot</code></p>
+</li>
+<li>
+<p><strong>Launch Htop in Terminal:</strong><br />
+<code>htop, sakura -t "htop" -c 150 -r 45 -x htop &amp;</code></p>
+</li>
+</ul>
+<hr />
+<h2>Querystring-Specific URL Requests</h2>
+<p>You can create URL (service) aliases in the <strong><code>serv.txt</code></strong> file using the format <code>L:</code> for query-based URLs.</p>
+<p><strong>Sample Format:</strong></p>
+<pre><code>alias_shortcut, Description, Base_URL
+</code></pre>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>
+<p><strong>Google Maps:</strong><br />
+<code>m, Google Maps, https://www.google.com/maps/search/</code></p>
+</li>
+<li>
+<p><strong>PHP Manual Lookup:</strong><br />
+<code>p, Php, http://php.net/manual-lookup.php?pattern=</code></p>
+</li>
+<li>
+<p><strong>Amazon Keyword Search:</strong><br />
+<code>a, Amazon, https://smile.amazon.com/s/ref=nb_sb_noss_1?field-keywords=</code></p>
+</li>
+<li>
+<p><strong>Generic URL:</strong><br />
+<code>u, URL, https://</code></p>
+</li>
+</ul>
+<p><strong>Usage:</strong><br />
+When you type the alias followed by a colon and your query, the text in the entry field is appended to the base URL.<br />
+For example:
+  - <code>m:Madison Wisconsin</code>
+  - <code>p:setcookie</code>
+  - <code>a:mini computers</code>
+  - <code>u:example.com</code></p>
+<hr />
+<h2>File Locations</h2>
+<p>Descq uses files stored under <code>/usr/local/descq-data/</code>:</p>
+<ul>
+<li><code>clip.txt</code> — Stores all saved clipboard text (accessed via commands like <code>sc</code> or <code>ec</code>).</li>
+<li><code>editor.txt</code> — Contains the name of your preferred text editor.</li>
+<li><code>search.txt</code> — Holds the URL for your default search engine.</li>
+<li><code>help.txt</code> — This help document.</li>
+<li><code>hist.txt</code> — Maintains your search history.</li>
+<li><code>serv.txt</code> — Stores user alias commands and targeted search URLs.</li>
+<li><code>urls.txt</code> — Contains saved URLs.</li>
+<li><code>winmet.txt</code> — Saves window metrics (size and position).</li>
+</ul>
+<hr />
+<h2>Configuring the Search Engine</h2>
+<p>By default, Descq uses the DuckDuckGo search engine. To change the search engine, edit the <code>search.txt</code> file (or use the <code>ee</code> command) and replace its content with your preferred search URL. Some popular options include:</p>
+<ul>
+<li>
+<p><a href="https://www.google.com/search?q=">Google Search</a>:<br />
+<code>https://www.google.com/search?q=</code></p>
+</li>
+<li>
+<p><a href="https://search.brave.com/search?q=">Brave Search</a>:<br />
+<code>https://search.brave.com/search?q=</code></p>
+</li>
+<li>
+<p><a href="https://duckduckgo.com/?q=">DuckDuckGo</a>:<br />
+<code>https://duckduckgo.com/?q=</code></p>
+</li>
+<li>
+<p><a href="https://www.bing.com/search?q=">Bing</a>:<br />
+<code>https://www.bing.com/search?q=</code></p>
+</li>
+<li>
+<p><a href="https://scholar.google.com/scholar?q=">Google Scholar</a>:<br />
+<code>https://scholar.google.com/scholar?q=</code></p>
+</li>
+<li>
+<p><a href="https://search.yahoo.com/search?p=">Yahoo Search</a>:<br />
+<code>https://search.yahoo.com/search?p=</code></p>
+</li>
+</ul>
+<h3>Consider Using DuckDuckGo</h3>
+<p>DuckDuckGo is highly recommended because it supports hundreds of "Bang" commands, allowing quick access to various services:</p>
+<p><strong>Examples of DuckDuckGo Bangs:</strong></p>
+<ul>
+<li><strong>Google Maps:</strong> <code>!m</code></li>
+<li><strong>Google Search:</strong> <code>!g</code></li>
+<li><strong>Amazon:</strong> <code>!a</code></li>
+<li><strong>Images:</strong> <code>!gimg</code> or <code>!pics</code></li>
+<li><strong>PHP:</strong> <code>!php</code></li>
+<li><strong>YouTube:</strong> <code>!ytus</code></li>
+<li><strong>Golang:</strong> <code>!golang</code> or <code>!godoc</code></li>
+<li><strong>Python:</strong> <code>!py3k</code> or <code>!py</code></li>
+<li><strong>StackOverflow:</strong> <code>!so</code>, <code>!sof</code>, <code>!ov</code>, or <code>!ddso</code></li>
+<li><strong>MDN:</strong> <code>!mdn</code></li>
+<li><strong>List of All Bangs:</strong> <code>!bang</code></li>
+</ul>
+<p>Some of the other browsers accept "bang" commands as well.</p>
+<hr />
+<h2>Using Descq from the Shell</h2>
+<p>If you want to use Descq from your command line:</p>
+<ol>
+<li><strong>Ensure:</strong> Descq is included in your system's PATH.</li>
+<li><strong>Limitations:</strong> Only commands defined in the <code>serv.txt</code> file and Internet searches will work.</li>
+<li><strong>Tip:</strong> Run <code>descq list</code> to print the contents of <code>serv.txt</code> to the console.</li>
+</ol>
+<hr />
+<h2>Summary</h2>
+<p>Descq combines the functionality of a search engine launcher, clipboard manager, and custom command executor into one lightweight tool. Whether you're quickly searching the web, saving important URLs and text, or setting up custom aliases for frequent commands, Descq is designed to streamline your workflow.</p>
+<p>Happy searching and commanding!</p>
