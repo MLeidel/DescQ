@@ -524,8 +524,7 @@ int main(int argc, char *argv[])
         show_message("<big>DescQ</big>", "Reached MAX URLS");
     }
 
-     // window keep above other windows ("top" will toggle)
-    // change_win_level();
+    srand((unsigned)time(NULL)); // rand function will use
 
     // load text editor name
     change_editor();
